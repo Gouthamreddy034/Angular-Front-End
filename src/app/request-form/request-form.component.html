@@ -1,0 +1,96 @@
+<div class="container">
+  <h1 class="text-center">Request Form</h1>
+  <form novalidate [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="cdsid">CDSIS</label>
+      <input 
+      type="text" 
+      class="form-control" 
+      id="cdsid" 
+      name="cdsid" 
+      formControlName="cdsid"
+      placeholder="Enter CDSIS">
+    </div>
+    <div *ngIf="signupForm.controls['cdsid'].touched && signupForm.controls['cdsid'].hasError('maxlength')"
+    class="alert alert-danger">
+      Maximum of 8 characters
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input 
+      type="text" 
+      class="form-control" 
+      id="name" 
+      name="name" 
+      formControlName="name"
+      placeholder="Enter Full Name">
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="applicationname">Application Name :</label>
+      <select 
+      class="form-control" 
+      id="applicationname" 
+      name="applicationname"
+      formControlName="applicationname">
+        <option *ngFor="let application of applications" [value]="application">
+          {{application}}
+        </option>
+      </select>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="accesstype">Type of Access Required :</label>
+      <select 
+      class="form-control" 
+      id="accesstype" 
+      name="accesstype"
+      formControlName="accesstype">
+        <option *ngFor="let TOAR of TOARs" [value]="TOAR">
+          {{TOAR}}
+        </option>
+      </select>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="date">Date</label>
+      <input 
+      type="date" 
+      name="date" 
+      id="date" 
+      class="form-control" 
+      formControlName="date"
+      ng-readonly="true" />
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="supervisorcdsid">Supervisor's CDSIS</label>
+      <input 
+      type="text" 
+      class="form-control" 
+      id="supervisorcdsid" 
+      name="supervisorcdsid" 
+      formControlName="supervisorcdsid"
+      placeholder="Enter Supervisor's CDSIS">
+    </div>
+    <div *ngIf="signupForm.controls['supervisorcdsid'].touched && signupForm.controls['supervisorcdsid'].hasError('maxlength')"
+    class="alert alert-danger">
+      Maximum of 8 characters
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="purpose">Justify the Purpose:</label>
+      <textarea 
+      class="form-control rounded-0" 
+      id="purpose" 
+      name="purpose" 
+      formControlName="purpose"
+      [(ngModel)]="Purpose" 
+      rows="3"></textarea>
+    </div>
+    <span>Remaining Characters : {{50-Purpose.length}}</span>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
