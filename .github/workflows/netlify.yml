@@ -1,5 +1,5 @@
 name: install-netlify-package
-on:[push]
+on: [push]
 jobs:
   check-netlify-version:
     runs-on: ubuntu-latest
