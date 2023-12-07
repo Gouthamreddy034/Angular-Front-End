@@ -6,5 +6,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - run: npm install netlify-cli -g
-      - run: npm netlify -v
+      - run: npm install bootstrap
+      - run: npm view bootstrap version
